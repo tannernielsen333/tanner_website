@@ -10,18 +10,21 @@ An API (Application Programming Interface) is a set of rules and protocols that 
 ## Accessing Data
 
 Learning how an API works is one thing, but it is important to note that there are many ways to set up an API. This means that while the general process for making a request is the same, the exact methods can vary. That said, there are five elements that make up essentially every API call:
+
 - URL
-    - This is the server containing the data that are being targeted. This URL can be found in the API documentation provided by the company/service. To find the data desired, the client uses the base URL along with a specific endpoint that indicates which data the API should retrieve.
+  - This is the server containing the data that are being targeted. This URL can be found in the API documentation provided by the company/service. To find the data desired, the client uses the base URL along with a specific endpoint that indicates which data the API should retrieve.
 - Method
-    - Usually this is where something like the GET command is run, which tells the server you want to retrieve records hosted on the server.
+  - Usually this is where something like the GET command is run, which tells the server you want to retrieve records hosted on the server.
 - Headers
-    - These represent the metadata included in the request and response. They tell the server things like where the request originates and how to handle it.
+  - These represent the metadata included in the request and response. They tell the server things like where the request originates and how to handle it.
 - Parameters
-    - Items appended to the base URL that specify what data is being requested by the client.
+  - Items appended to the base URL that specify what data is being requested by the client.
 - Body (Payload)
-    - The data sent from the server to the client, which is most commonly received in a JSON format.
+  - The data sent from the server to the client, which is most commonly received in a JSON format.
 
 As part of a previous class project, my team and I worked with the API provided by the UFA (Ultimate Frisbee Association). As seen in the image below, the UFA provides documentation about how the data are formatted, the base URL, and the endpoint.
+
+![](ufa_api.png){fig-alt="Screenshot of UFA API reference homepage."}
 
 Documentation like this is crucial to understanding not only how to request information, but how the data requested will be sent from the server.
 
