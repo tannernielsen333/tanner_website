@@ -2,4 +2,4 @@
 title: "About"
 ---
 
-HI I'm Tanner! I'm a senior at BYU studying Statistics with an emphasis in Data Science. I've also done a minor in Business. When I'm not in school I love to play basketball, golf, and try new food.
+Hi I'm Tanner! I'm a senior at BYU studying Statistics with an emphasis in Data Science, and a minor in Business. When I'm not in school I love to play basketball, golf, and try new food.
