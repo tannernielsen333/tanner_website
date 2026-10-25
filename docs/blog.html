@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Understanding APIs – tannernielsen333.github.io</title>
+<title>Blog – tannernielsen333.github.io</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -71,6 +36,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -108,7 +75,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -154,24 +179,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#the-basics" id="toc-the-basics" class="nav-link active" data-scroll-target="#the-basics">The Basics</a></li>
-  <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data">Accessing Data</a></li>
-  <li><a href="#how-companies-use-apis" id="toc-how-companies-use-apis" class="nav-link" data-scroll-target="#how-companies-use-apis">How Companies Use APIs</a></li>
-  <li><a href="#limitations-and-restrictions" id="toc-limitations-and-restrictions" class="nav-link" data-scroll-target="#limitations-and-restrictions">Limitations and Restrictions</a></li>
-  <li><a href="#tying-it-all-together" id="toc-tying-it-all-together" class="nav-link" data-scroll-target="#tying-it-all-together">Tying It All Together</a></li>
-  </ul>
-</nav>
-    </div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Understanding APIs</h1>
+<h1 class="title">Blog</h1>
 </div>
 
 
@@ -188,86 +203,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="the-basics" class="level2">
-<h2 class="anchored" data-anchor-id="the-basics">The Basics</h2>
-<p>An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate and exchange data with each other. One common way of simplifying this concept is to imagine you are in a restaurant. The end goal is get to be served the food from the kitchen. However, you cannot go directly to the kitchen to acquire food. Because of this, you (the client) must make an order through the waiter (the API) to be able to reach the kitchen (the server). The waiter will taker your order, verify your request, and return your food.</p>
-</section>
-<section id="accessing-data" class="level2">
-<h2 class="anchored" data-anchor-id="accessing-data">Accessing Data</h2>
-<p>Learning how an API works is one thing, but it is important to note that there are many ways to set up an API. This means that while the general process for making a request is the same, the exact methods can vary. That said, there are five elements that make up essentially every API call:</p>
-<ul>
-<li>URL
-<ul>
-<li>This is the server containing the data that are being targeted. This URL can be found in the API documentation provided by the company/service. To find the data desired, the client uses the base URL along with a specific endpoint that indicates which data the API should retrieve.</li>
-</ul></li>
-<li>Method
-<ul>
-<li>Usually this is where something like the GET command is run, which tells the server you want to retrieve records hosted on the server.</li>
-</ul></li>
-<li>Headers
-<ul>
-<li>These represent the metadata included in the request and response. They tell the server things like where the request originates and how to handle it.</li>
-</ul></li>
-<li>Parameters
-<ul>
-<li>Items appended to the base URL that specify what data is being requested by the client.</li>
-</ul></li>
-<li>Body (Payload)
-<ul>
-<li>The data sent from the server to the client, which is most commonly received in a JSON format.</li>
-</ul></li>
-</ul>
-<p>As part of a previous class project, my team and I worked with the API provided by the UFA (Ultimate Frisbee Association). As seen in the image below, the UFA provides documentation about how the data are formatted, the base URL, and the endpoint.</p>
-<p><img src="ufa_api.png" class="img-fluid" alt="Screenshot of UFA API reference homepage."></p>
-<p>Documentation like this is crucial to understanding not only how to request information, but how the data requested will be sent from the server.</p>
-</section>
-<section id="how-companies-use-apis" class="level2">
-<h2 class="anchored" data-anchor-id="how-companies-use-apis">How Companies Use APIs</h2>
-<p>The purpose of an API for most companies goes far beyond allowing anyone to grab their data for a personal project. In reality, APIs have many different use cases. For example, they are critical for the operation of many businesses that leverage online payments. When a customer submits an order for a product, one or more API calls could be made. Examples of these are an API that processes payment, one that confirms the order, and another that updates a database.</p>
-<p>It is also important to note the distinction between internal and external APIs. Internal APIs connect different parts of a company’s software, which allows them to communicate with each other. External APIs connect the company to another organization or user’s software. The UFA API mentioned above is a good example of an external API.</p>
-</section>
-<section id="limitations-and-restrictions" class="level2">
-<h2 class="anchored" data-anchor-id="limitations-and-restrictions">Limitations and Restrictions</h2>
-<p>The ability to restrict who can access specific information through a specific API is simultaneously a great benefit and drawback. This is a benefit because sensitive information can be kept secure, while public or non-sensitive data can be made available to anyone with access to a machine capable of calling the API. Some of the most important restrictions to be aware of when working with APIs are rate and payload limits. Both are interrelated, but distinct.</p>
-<ul>
-<li>Rate limit: a control that restricts the number of requests a user can make within a given timeframe.</li>
-<li>Payload limit: a control that determines the maximum amount of data/records that can be sent in response to a request.</li>
-</ul>
-<p>Being aware of these restrictions can help a client maintain access to an API along with a sustainable data pipeline.</p>
-</section>
-<section id="tying-it-all-together" class="level2">
-<h2 class="anchored" data-anchor-id="tying-it-all-together">Tying It All Together</h2>
-<p>After having discussed some of the most important parts of APIs and how to work with them, below is an example of how a user could call an API from the website restcountries.com. The steps for doing so can be followed generally for many use cases, and should be helpful to continue working with APIs in a variety of ways.</p>
-<div id="8e66b9f9" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Choose the API endpoint</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://restcountries.com/v3.1/name/france"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Send a request to the API</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, timeout<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Check whether the request succeeded</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Convert the response into Python data</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    countries <span class="op">=</span> response.json()</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 5. Extract and display the information we need</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    country <span class="op">=</span> countries[<span class="dv">0</span>]</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Country:"</span>, country[<span class="st">"name"</span>][<span class="st">"common"</span>])</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Capital:"</span>, country[<span class="st">"capital"</span>][<span class="dv">0</span>])</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Population:"</span>, country[<span class="st">"population"</span>])</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Request failed:"</span>, response.status_code)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+
+
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1792898501671" data-listing-reading-time-sort="4" data-listing-word-count-sort="795">
+<a href="./posts/understanding-apis.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Understanding APIs
+</h5>
+<div class="card-text listing-description delink">
+<p>An introduction to APIs and how they work.</p>
 </div>
-
-
-</section>
-
-</main> <!-- /main -->
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

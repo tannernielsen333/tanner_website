@@ -1,10 +1,52 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Tanner Nielsen’s Portfolio",
+    "objectID": "posts/understanding-apis.html",
+    "href": "posts/understanding-apis.html",
+    "title": "Understanding APIs",
     "section": "",
-    "text": "Coming soon…"
+    "text": "An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate and exchange data with each other. One common way of simplifying this concept is to imagine you are in a restaurant. The end goal is get to be served the food from the kitchen. However, you cannot go directly to the kitchen to acquire food. Because of this, you (the client) must make an order through the waiter (the API) to be able to reach the kitchen (the server). The waiter will taker your order, verify your request, and return your food."
+  },
+  {
+    "objectID": "posts/understanding-apis.html#the-basics",
+    "href": "posts/understanding-apis.html#the-basics",
+    "title": "Understanding APIs",
+    "section": "",
+    "text": "An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate and exchange data with each other. One common way of simplifying this concept is to imagine you are in a restaurant. The end goal is get to be served the food from the kitchen. However, you cannot go directly to the kitchen to acquire food. Because of this, you (the client) must make an order through the waiter (the API) to be able to reach the kitchen (the server). The waiter will taker your order, verify your request, and return your food."
+  },
+  {
+    "objectID": "posts/understanding-apis.html#accessing-data",
+    "href": "posts/understanding-apis.html#accessing-data",
+    "title": "Understanding APIs",
+    "section": "Accessing Data",
+    "text": "Accessing Data\nLearning how an API works is one thing, but it is important to note that there are many ways to set up an API. This means that while the general process for making a request is the same, the exact methods can vary. That said, there are five elements that make up essentially every API call:\n\nURL\n\nThis is the server containing the data that are being targeted. This URL can be found in the API documentation provided by the company/service. To find the data desired, the client uses the base URL along with a specific endpoint that indicates which data the API should retrieve.\n\nMethod\n\nUsually this is where something like the GET command is run, which tells the server you want to retrieve records hosted on the server.\n\nHeaders\n\nThese represent the metadata included in the request and response. They tell the server things like where the request originates and how to handle it.\n\nParameters\n\nItems appended to the base URL that specify what data is being requested by the client.\n\nBody (Payload)\n\nThe data sent from the server to the client, which is most commonly received in a JSON format.\n\n\nAs part of a previous class project, my team and I worked with the API provided by the UFA (Ultimate Frisbee Association). As seen in the image below, the UFA provides documentation about how the data are formatted, the base URL, and the endpoint.\n\nDocumentation like this is crucial to understanding not only how to request information, but how the data requested will be sent from the server."
+  },
+  {
+    "objectID": "posts/understanding-apis.html#how-companies-use-apis",
+    "href": "posts/understanding-apis.html#how-companies-use-apis",
+    "title": "Understanding APIs",
+    "section": "How Companies Use APIs",
+    "text": "How Companies Use APIs\nThe purpose of an API for most companies goes far beyond allowing anyone to grab their data for a personal project. In reality, APIs have many different use cases. For example, they are critical for the operation of many businesses that leverage online payments. When a customer submits an order for a product, one or more API calls could be made. Examples of these are an API that processes payment, one that confirms the order, and another that updates a database.\nIt is also important to note the distinction between internal and external APIs. Internal APIs connect different parts of a company’s software, which allows them to communicate with each other. External APIs connect the company to another organization or user’s software. The UFA API mentioned above is a good example of an external API."
+  },
+  {
+    "objectID": "posts/understanding-apis.html#limitations-and-restrictions",
+    "href": "posts/understanding-apis.html#limitations-and-restrictions",
+    "title": "Understanding APIs",
+    "section": "Limitations and Restrictions",
+    "text": "Limitations and Restrictions\nThe ability to restrict who can access specific information through a specific API is simultaneously a great benefit and drawback. This is a benefit because sensitive information can be kept secure, while public or non-sensitive data can be made available to anyone with access to a machine capable of calling the API. Some of the most important restrictions to be aware of when working with APIs are rate and payload limits. Both are interrelated, but distinct.\n\nRate limit: a control that restricts the number of requests a user can make within a given timeframe.\nPayload limit: a control that determines the maximum amount of data/records that can be sent in response to a request.\n\nBeing aware of these restrictions can help a client maintain access to an API along with a sustainable data pipeline."
+  },
+  {
+    "objectID": "posts/understanding-apis.html#tying-it-all-together",
+    "href": "posts/understanding-apis.html#tying-it-all-together",
+    "title": "Understanding APIs",
+    "section": "Tying It All Together",
+    "text": "Tying It All Together\nAfter having discussed some of the most important parts of APIs and how to work with them, below is an example of how a user could call an API from the website restcountries.com. The steps for doing so can be followed generally for many use cases, and should be helpful to continue working with APIs in a variety of ways.\n\nimport requests\n\n# 1. Choose the API endpoint\nurl = \"https://restcountries.com/v3.1/name/france\"\n\n# 2. Send a request to the API\nresponse = requests.get(url, timeout=10)\n\n# 3. Check whether the request succeeded\nif response.status_code == 200:\n\n    # 4. Convert the response into Python data\n    countries = response.json()\n\n    # 5. Extract and display the information we need\n    country = countries[0]\n\n    print(\"Country:\", country[\"name\"][\"common\"])\n    print(\"Capital:\", country[\"capital\"][0])\n    print(\"Population:\", country[\"population\"])\n\nelse:\n    print(\"Request failed:\", response.status_code)"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Understanding APIs\n\n\nAn introduction to APIs and how they work.\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -14,45 +56,10 @@
     "text": "Hi I’m Tanner! I’m a senior at BYU studying Statistics with an emphasis in Data Science, and a minor in Business. When I’m not in school I love to play basketball, golf, and try new food."
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Understanding APIs",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tanner Nielsen’s Portfolio",
     "section": "",
-    "text": "An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate and exchange data with each other. One common way of simplifying this concept is to imagine you are in a restaurant. The end goal is get to be served the food from the kitchen. However, you cannot go directly to the kitchen to acquire food. Because of this, you (the client) must make an order through the waiter (the API) to be able to reach the kitchen (the server). The waiter will taker your order, verify your request, and return your food."
-  },
-  {
-    "objectID": "blog.html#the-basics",
-    "href": "blog.html#the-basics",
-    "title": "Understanding APIs",
-    "section": "",
-    "text": "An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate and exchange data with each other. One common way of simplifying this concept is to imagine you are in a restaurant. The end goal is get to be served the food from the kitchen. However, you cannot go directly to the kitchen to acquire food. Because of this, you (the client) must make an order through the waiter (the API) to be able to reach the kitchen (the server). The waiter will taker your order, verify your request, and return your food."
-  },
-  {
-    "objectID": "blog.html#accessing-data",
-    "href": "blog.html#accessing-data",
-    "title": "Understanding APIs",
-    "section": "Accessing Data",
-    "text": "Accessing Data\nLearning how an API works is one thing, but it is important to note that there are many ways to set up an API. This means that while the general process for making a request is the same, the exact methods can vary. That said, there are five elements that make up essentially every API call:\n\nURL\n\nThis is the server containing the data that are being targeted. This URL can be found in the API documentation provided by the company/service. To find the data desired, the client uses the base URL along with a specific endpoint that indicates which data the API should retrieve.\n\nMethod\n\nUsually this is where something like the GET command is run, which tells the server you want to retrieve records hosted on the server.\n\nHeaders\n\nThese represent the metadata included in the request and response. They tell the server things like where the request originates and how to handle it.\n\nParameters\n\nItems appended to the base URL that specify what data is being requested by the client.\n\nBody (Payload)\n\nThe data sent from the server to the client, which is most commonly received in a JSON format.\n\n\nAs part of a previous class project, my team and I worked with the API provided by the UFA (Ultimate Frisbee Association). As seen in the image below, the UFA provides documentation about how the data are formatted, the base URL, and the endpoint.\n\nDocumentation like this is crucial to understanding not only how to request information, but how the data requested will be sent from the server."
-  },
-  {
-    "objectID": "blog.html#how-companies-use-apis",
-    "href": "blog.html#how-companies-use-apis",
-    "title": "Understanding APIs",
-    "section": "How Companies Use APIs",
-    "text": "How Companies Use APIs\nThe purpose of an API for most companies goes far beyond allowing anyone to grab their data for a personal project. In reality, APIs have many different use cases. For example, they are critical for the operation of many businesses that leverage online payments. When a customer submits an order for a product, one or more API calls could be made. Examples of these are an API that processes payment, one that confirms the order, and another that updates a database.\nIt is also important to note the distinction between internal and external APIs. Internal APIs connect different parts of a company’s software, which allows them to communicate with each other. External APIs connect the company to another organization or user’s software. The UFA API mentioned above is a good example of an external API."
-  },
-  {
-    "objectID": "blog.html#limitations-and-restrictions",
-    "href": "blog.html#limitations-and-restrictions",
-    "title": "Understanding APIs",
-    "section": "Limitations and Restrictions",
-    "text": "Limitations and Restrictions\nThe ability to restrict who can access specific information through a specific API is simultaneously a great benefit and drawback. This is a benefit because sensitive information can be kept secure, while public or non-sensitive data can be made available to anyone with access to a machine capable of calling the API. Some of the most important restrictions to be aware of when working with APIs are rate and payload limits. Both are interrelated, but distinct.\n\nRate limit: a control that restricts the number of requests a user can make within a given timeframe.\nPayload limit: a control that determines the maximum amount of data/records that can be sent in response to a request.\n\nBeing aware of these restrictions can help a client maintain access to an API along with a sustainable data pipeline."
-  },
-  {
-    "objectID": "blog.html#tying-it-all-together",
-    "href": "blog.html#tying-it-all-together",
-    "title": "Understanding APIs",
-    "section": "Tying It All Together",
-    "text": "Tying It All Together\nAfter having discussed some of the most important parts of APIs and how to work with them, below is an example of how a user could call an API from the website restcountries.com. The steps for doing so can be followed generally for many use cases, and should be helpful to continue working with APIs in a variety of ways.\n\nimport requests\n\n# 1. Choose the API endpoint\nurl = \"https://restcountries.com/v3.1/name/france\"\n\n# 2. Send a request to the API\nresponse = requests.get(url, timeout=10)\n\n# 3. Check whether the request succeeded\nif response.status_code == 200:\n\n    # 4. Convert the response into Python data\n    countries = response.json()\n\n    # 5. Extract and display the information we need\n    country = countries[0]\n\n    print(\"Country:\", country[\"name\"][\"common\"])\n    print(\"Capital:\", country[\"capital\"][0])\n    print(\"Population:\", country[\"population\"])\n\nelse:\n    print(\"Request failed:\", response.status_code)"
+    "text": "Coming soon…"
   }
 ]
