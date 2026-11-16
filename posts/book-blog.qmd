@@ -1,0 +1,29 @@
+---
+title: "Reflection on *The Ethical Algorithm*"
+description: "My thoughts on the book and the ideas it presents."
+execute:
+    eval: false
+---
+# Introduction
+
+*The Ethical Algorithm* is a book written by Michael Kearns and Aaron Roth that addresses many different aspects of effective and ethical algorithm design. Since data is more abundant than ever, the authors argue for more diligence in creating algorithms and machine learning models. A practical approach to this includes using the principles in the acronym F.A.T.E, meaning fairness, accuracy, transparency, and ethics. Each of these plays a role in deciding what data should be used, how model success is determined, and how the output models should be implemented. 
+
+# Key Principles
+
+## Differential Privacy
+
+One of the most interesting ideas introduced in this book, differential privacy allows for accurate data collection while obscuring the exact sources of said data. The basic premise of differential privacy is to collect real data while intentionally including random noise in the data. In this way, we gain insights that are very true to reality but without allowing others to truly know to whom the data belongs. This strategy is used by companies like Apple, Google, and many healthcare providers to extract real insights while protecting consumers.
+
+## Fairness
+
+I will acknowledge that *fairness* itself can be very broad. In the context of ethical algorithm design, we mean to address any bias that may be encountered through the creation and output of machine learning models. Kearns and Roth wrestle with this reality throughout the book. It is critical to be aware of how existing feature in a dataset or model can introduce bias. In the book, the authors explain how a metric like SAT scores is inherently biased, especially in terms of predicting college success. In general, wealthier students will have better access to prep materials and tutors, thus leading to higher SAT scores. If a specific college is not careful, they could unintentionally be discriminating against students from lower-income households. 
+This becomes especially important to address because if the information collected in a specific dataset is biased, the outputs will always also be biased. A quote that was particularly impactful to me comes from this same chapter on fairness from Sydney Morgenbesser in response to his assault during the 1968 Columbia University protests where he said, “They beat me up unjustly, but since they did the same thing to everyone else, it was not unfair.” Fairness must be established by humans who are attempting to treat every group with the same scrutiny, rather than using biased data.
+
+## Deliberate Deception
+
+While reading through chapter 4, *Lost in the Garden*, I was very intrigued to read about how some people take advantage of others through scams involving a binary tree. The example they give in the book goes like this: A man receives an email from someone—unknown to him—who is claiming he knows a certain stock will end the day up, and that the recipient should invest in this stock as a result. To the recipient’s amusement, the stock indeed ends the day up. For the next few days, the same email rolls in, right on time and right on target. The recipient is baffled by the fact that this supposed market expert has correctly predicted the outcome of the stock for multiple days in a row. The next day, this *expert* sends another email, but this time he says he will only continue to send stock advice if the recipient pays him in return. The recipient bites, pays the fee, and the expert takes off, never to be seen again. What happened? The scammer implemented a scam that mimics the design of a binary tree, where he sends an email to potentially millions of people. For half of this group, the trickster predicts that a particular stock will be up, and for the rest he predicts that it will be down. Each day, the scammer is right half the time. Using this approach, he can narrow his pool of victims and impress them with his prophecy.
+In a similar manner, many research journals and scientists may deliberately take advantage of a technique called *p-hacking*. This is the intentional reproduction of an unsuccessful test or trial, knowing that eventually a significant p-value will be achieved. One test out of twenty producing something significant most definitely does not mean a conclusion can be made about that particular test. While some problems in ethical algorithm design may be ambiguous, intentionally leading others to believe erroneous conclusions should never be something in which anyone engages.
+
+# Broader Applications
+
+One thing this book has helped me to see is how much power we have as a society in influencing the public perception of truth. I am grateful that my eyes have been opened to how algorithms can be used to obfuscate the truth and hope to think more critically about sensational new findings or predictions. I am now even more dedicated than before to using data for good and to truly uncover its meaning, rather than using data to fit my narrative. Having gained this knowledge, I can also lead others to do the same. 
